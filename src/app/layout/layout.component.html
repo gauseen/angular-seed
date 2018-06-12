@@ -1,4 +1,20 @@
-<div class="layout">
-  layout Box!
-  <router-outlet></router-outlet>
-</div>
+<nz-layout>
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate">
+    <app-sidebar [isCollapsed]="isCollapsed"></app-sidebar>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-header style="background: #fff; padding:0;">
+      <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
+    </nz-header>
+
+    <nz-content style="margin:0 16px;">
+      <app-main></app-main>
+    </nz-content>
+
+  </nz-layout>
+</nz-layout>
+
+<ng-template #trigger>
+  <i class="anticon anticon-up"></i>
+</ng-template>
